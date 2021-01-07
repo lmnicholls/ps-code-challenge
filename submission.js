@@ -43,5 +43,35 @@ const removeParenth = function(str) {
 };
 
 const scoreScrabble = function(str) {
-  // your code here - don't forget to return a number!
+    let onePoint = /[aeioulnrst]/gi;
+  let twoPoints = /[dg]/gi;
+  let threePoints = /[bcmp]/gi;
+  let fourPoints = /[fhvwy]/gi;
+  let fivePoints = /[k]/gi;
+  let eightPoints = /[jx]/gi;
+  let tenPoints = /[qz]/gi;
+  
+  let score = 0;
+  if (str.match(onePoint) !== null) {
+  	score += str.match(onePoint).length * 1;
+  }
+  if (str.match(twoPoints) !== null) {
+  	score += str.match(twoPoints).length * 2;
+  }
+  if (str.match(threePoints) !== null) {
+  	score += str.match(threePoints).length * 3;
+  }
+  if (str.match(fourPoints) !== null) {
+  	score += str.match(fourPoints).length * 4;
+  }
+  if (str.match(fivePoints) !== null) {
+  	score += str.match(fivePoints) * 5;
+  }
+  if (str.match(eightPoints) !== null) {
+  	score += str.match(eightPoints).length * 8;
+  }
+  if (str.match(tenPoints) !== null) {
+  	score += str.match(tenPoints).length * 10;
+  }
+  return score;
 };
