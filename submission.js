@@ -7,7 +7,29 @@ const findSum = function(array) {
 };
 
 const findFrequency = function(array) {
-  // your code here - don't forget to return an object!
+  let sortedArray = array.sort();
+  let frequencyObj = {most: '', least: ''};
+  let freq = 0;
+  let max = 0;
+  let min = array.length;
+  
+  for (let i = 0; i < array.length; i++) {
+    if (sortedArray[i] === sortedArray[i + 1]) {
+        freq += 1;
+    }
+    else {
+      if (freq > max) {
+        frequencyObj.most = sortedArray[i];
+        max = freq;
+      }
+      if (freq < min) {
+        frequencyObj.least = sortedArray[i];
+        min = freq;
+      }
+        freq = 0;
+    }
+  }
+  return frequencyObj;
 };
 
 const isPalindrome = function(str) {
@@ -39,11 +61,12 @@ const largestPair = function(array) {
 };
 
 const removeParenth = function(str) {
-  // your code here - don't forget to return a string!
+  let string = str.replace(/\([^]*\)/gi, '');
+  return string;
 };
 
 const scoreScrabble = function(str) {
-    let onePoint = /[aeioulnrst]/gi;
+  let onePoint = /[aeioulnrst]/gi;
   let twoPoints = /[dg]/gi;
   let threePoints = /[bcmp]/gi;
   let fourPoints = /[fhvwy]/gi;
